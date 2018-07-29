@@ -6,11 +6,8 @@
 using namespace std;
 
 vector<string> Permutation(string str) {
-    if(str.size() == 0){
-        return result;
-    }
+    if(str.size() == 0) return result;
     dfs(str,0);
-    sort(result.begin(),result.end());
     return result;
 }
 
