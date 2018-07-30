@@ -1,14 +1,14 @@
 class Solution {
 public:
     int InversePairs(vector<int> data) {
-        int n=data.size();
-        return process(data,0,n-1);
+        int n = data.size();
+        return process(data, 0, n-1);
     }
     
     int process(vector<int>& data,int start,int end)
     {
         //递归终止条件
-        if(start>=end)
+        if(start >= end)
         {
             return 0;
         }
@@ -16,8 +16,8 @@ public:
         // 归并排序，并计算本次逆序对数
 	    vector<int> copy(data); // 数组副本，用于归并排序
         int mid=(start+end)>>1;
-        int left=process(data,start,mid) % 1000000007     ;
-        int right=process(data,mid+1,end) % 1000000007;
+        int left=process(data, start, mid);
+        int right=process(data, mid+1, end);
         
         int p=mid;//p初始化为前半段最后一个数字的下标
         int q=end;//q初始化为后半段最后一个数字的下标
@@ -30,7 +30,6 @@ public:
             {
                 copy[index--]=data[p--];
                 count+=q-mid;
-                count %= 1000000007;
             }
             else
             {
@@ -46,7 +45,7 @@ public:
 			data[i] = copy[i];//更新归并排序后的子数组
 	    }
  
-        return (left+right+count)  % 1000000007;
+        return (left+right+count);
     }
 };
 

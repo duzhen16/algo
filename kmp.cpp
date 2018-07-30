@@ -15,8 +15,8 @@ vector<int> getNext(string pattern) {
 	int k = -1;
 	while (j < pl - 1) {
 		if (k == -1 || pattern[j] == pattern[k]) 
-			if (pattern[k + 1] == pattern[j + 1])
-				next[++j] = next[++k];	//optimaze
+			if (pattern[k + 1] == pattern[j + 1]) //optimaze
+				next[++j] = next[++k];	
 			else 
 				next[++j] = ++k; // original
 		else

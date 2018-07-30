@@ -3,6 +3,23 @@
 #include <math.h>
 #include <algorithm>
 using namespace std;
+
+The dp[i][j] saves how much more scores that the first-in-action 
+player will get from i to j than the second player. First-in-action
+means whomever moves first. 
+
+dp[i][j] = max(nums[i] - dp[i+1][j], nums[j] - dp[i][j-1]);
+
+//优化到一维：
+int card(vector<int> nums) {
+	int len = nums.size();
+    vector<int> dp(len, 0);
+    for (int i = len - 2; i >= 0; i--) 
+        for (int j = i + 1; j < len; j++) 
+            dp[j] = max(nums[i] - dp[j], nums[j] - dp[j - 1]);
+    return dp[len - 1];
+}
+		
 class minPathSum_C {
 public:
 	int minPathSum(vector<vector<int>> &M) {

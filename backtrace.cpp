@@ -16,7 +16,7 @@ void dfs(string str,int begin){
         result.push_back(str);
         return ;
     }
-    for(int i = begin; i < str.size();i++){
+    for(int i = begin; i < str.size(); i++){
         if(i != begin && str[begin]==str[i])
             continue;
         swap(str[begin], str[i]);

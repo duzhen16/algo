@@ -18,6 +18,16 @@ ListNode* reverseList(ListNode* head) {
     }
     return prev;
 }
+//递归反转单链表 
+Node * reverseList_R(Node * head) {
+    if (head == nullptr || head->next == nullptr)
+        return head;
+    Node * next = head->next;
+    Node * res = reverseList_R(next);
+    head->next = nullptr;
+    next->next = head;
+    return res;
+}
 
 //倒数第K个节点
 ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) {
