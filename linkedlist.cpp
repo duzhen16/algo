@@ -87,3 +87,54 @@ ListNode* FindFirstCommonNode( ListNode* pHead1, ListNode* pHead2) {
     }
     return pHead1;
 }
+
+
+struct Node {
+    int val;
+    Node * next;
+    Node(int v) : val(v), next(nullptr){}
+};
+
+struct Pair {
+    Node * begin;
+    Node * end;
+    Pair() : begin(nullptr), end(nullptr){}
+};
+
+Node * reverseListByK(Node * head, int k) {
+    //得到链表长度。
+    int len = 0;
+    Node *p = head;
+    while (p) {
+        len++;
+        p = p->next;
+    }
+    if (k < 0 || k >= len) return head;
+    
+    int cnt = len / k;
+    int mod = len % k;
+    if (mod != 0) cnt += 1;
+    vector<Pair *> pairs;
+    p = head;
+    while (cnt > 0 && p) {
+        Pair * pr = new Pair;
+        pr->begin = p;
+        int i = 0;
+        while (i < k - 1 && p->next) {
+            p = p->next;
+            i++;
+        }
+        if (p)
+            pr->end = p;
+        pairs.push_back(pr);
+        p = p->next;
+        cnt--;
+    }
+    cnt = pairs.size() - 1;
+    Node * nh = pairs[cnt]->begin;
+    for (int i = pairs.size() - 1; i > 0; i--) {
+        pairs[i]->end->next = pairs[i - 1]->begin;
+    }
+    pairs[0]->end->next = nullptr;
+    return nh;
+}
