@@ -31,7 +31,7 @@ TreeNode * prev_construct(vector<int> nums, int &idx, int invalid)
 @prev : 前序遍历的结果数组
 @in   : 中序遍历的结果数组
 @p	  : 子树的在前序中的首节点下标
-@i	  : 子树的左子树的首节点下标
+@i	  : 子树的在中序中的首节点下标
 @len  : 子树的长度
 */
 TreeNode * construct_prev_in(vector<int> prev, vector<int> in, int p, int i, int len)

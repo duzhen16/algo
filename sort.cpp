@@ -178,7 +178,7 @@ int main()
 	//merge(nums);
 	//radix(nums);
 	//shell(nums);
-	//for (auto n : nums) 
+	for (auto n : nums) 
 		cout << n << " ";
 	return 0;
 }

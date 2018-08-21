@@ -4,13 +4,14 @@
 #include <algorithm>
 using namespace std;
 
-The dp[i][j] saves how much more scores that the first-in-action 
+//é˜¿é‡Œæµ‹è¯„é¢˜
+/*The dp[i][j] saves how much more scores that the first-in-action 
 player will get from i to j than the second player. First-in-action
 means whomever moves first. 
 
 dp[i][j] = max(nums[i] - dp[i+1][j], nums[j] - dp[i][j-1]);
+*/
 
-//ÓÅ»¯µ½Ò»Î¬£º
 int card(vector<int> nums) {
 	int len = nums.size();
     vector<int> dp(len, 0);
@@ -59,7 +60,7 @@ public:
 class minCoins_C {
 public:
 	int minCoins(vector<int> &Coins, int aim) {
-		// greedy, ²»Ò»¶¨ÄÜÇó³ö½â£¬[2,3,5] -> 11;
+		// greedy, ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â£¬[2,3,5] -> 11;
 		// time : O(NlogN) 
 		// mem  : O(1)
 		sort(Coins.begin(), Coins.end());
@@ -75,7 +76,7 @@ public:
 		return -1;
 	}
 	
-	int minCoins2(vector<int> &Coins, int aim) { // ¿ÉÖØ¸´Ê¹ÓÃ
+	int minCoins2(vector<int> &Coins, int aim) { // ï¿½ï¿½ï¿½Ø¸ï¿½Ê¹ï¿½ï¿½
 		// DP   dp[i][j] = min { dp[i - 1][j] , dp[i][j - Coins[i]] + 1}
 		// time : (Coins.size() * aim)  
 		// mem  : O(Coins.size() * aim) 
@@ -95,7 +96,7 @@ public:
 			}
 		return dp[Coins.size() - 1][aim] != INT_MAX ? dp[Coins.size() - 1][aim] : -1;
 	}
-	int minCoins3(vector<int> &Coins, int aim) { // ²»¿ÉÖØ¸´
+	int minCoins3(vector<int> &Coins, int aim) { // ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½
 		//DP dp[i][j] = min (dp[i - 1][j], dp[i - 1][j - Coins[i]] + 1}
 		vector<vector<int>> dp(Coins.size(), vector<int>(aim + 1, 0));
 		for (int i = 1; i <= aim; i++) dp[0][i] = INT_MAX;
@@ -122,13 +123,13 @@ public:
 			res += help(coins, idx + 1, aim - coins[idx] * i);
 		return res;
 	}
-	int makeupCoins(vector<int> &coins, int aim) { //¿ÉÒÔÖØ¸´
+	int makeupCoins(vector<int> &coins, int aim) { //ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½
 		//recursive
 		if (aim < 0 || coins.size() == 0) return 0;
 		return help(coins, 0, aim);
 	}
 	
-	int makeupCoins2(vector<int> &coins, int aim) { //¿ÉÒÔÖØ¸´
+	int makeupCoins2(vector<int> &coins, int aim) { //ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½
 		//DP;
 		// time : O(aim^2 * coins.size())
 		// mem  : O(row * col);
@@ -148,7 +149,7 @@ public:
 		return dp[row - 1][col - 1];
 	}
 
-	int makeupCoins3(vector<int> &coins, int aim) { //¿ÉÒÔÖØ¸´
+	int makeupCoins3(vector<int> &coins, int aim) { //ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½
 		//DP; dp[i][j] = dp[i - 1][j] + dp[i][j - coins[i]];
 		// time : O(aim * coins.size())
 		// mem  : O(aim);
@@ -160,7 +161,7 @@ public:
 		return dp[aim];
 	}
 
-	int makeupCoins4(vector<int>& nums, int target) {//²»¿ÉÒÔÖØ¸´
+	int makeupCoins4(vector<int>& nums, int target) {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½
 		vector<int> dp(target + 1, 0);
 		dp[0] = 1;
 		for (int i = 0; i < nums.size(); i++) {
