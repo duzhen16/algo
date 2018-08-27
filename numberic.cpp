@@ -4,7 +4,7 @@
 #include <algorithm>
 using namespace std;
 
-//æ•°å­—ä¸­1çš„ä¸ªæ•°    
+//Êı×ÖÖĞ1µÄ¸öÊı    
 int  NumberOf1(int n) {
      int cnt = 0;
      while (n) {
@@ -13,7 +13,7 @@ int  NumberOf1(int n) {
      }
      return cnt;
 }
-// è®¡ç®—powå‡½æ•°
+// ¼ÆËãpowº¯Êı
 double Power(double base, int exponent) {
     double res = 1;
     int absexp = abs(exponent);
@@ -25,20 +25,20 @@ double Power(double base, int exponent) {
     if (exponent < 0) res = 1 / res;
     return res;
 }
-//string è½¬ int
+//string ×ª int
 int myAtoi(char* str) {
     int sign = 1, base = 0, i = 0;
-    //å»é™¤å¼€å¤´çš„ç©ºç™½å­—ç¬¦
+    //È¥³ı¿ªÍ·µÄ¿Õ°××Ö·û
     while (str[i] == ' ')  
         ++; 
 
-    //å¦‚æœæœ‰+-å·ï¼Œåˆ¤æ–­æ•°å­—çš„ç¬¦å·
+    //Èç¹ûÓĞ+-ºÅ£¬ÅĞ¶ÏÊı×ÖµÄ·ûºÅ
     if (str[i] == '-' || str[i] == '+') { 
         sign = 1 - 2 * (str[i++] == '-'); 
     }
 
     while (str[i] >= '0' && str[i] <= '9') {
-        // åˆ¤æ–­æº¢å‡º
+        // ÅĞ¶ÏÒç³ö
         if (base >  INT_MAX / 10 || (base == INT_MAX / 10 && str[i] - '0' > 7)) {
             if (sign == 1) 
                 return INT_MAX;
@@ -50,7 +50,7 @@ int myAtoi(char* str) {
     return base * sign;
 }
 
-//æ•°ç»„ä¸­å‡ºç°è¶…è¿‡ä¸€åŠçš„æ•°
+//Êı×éÖĞ³öÏÖ³¬¹ıÒ»°ëµÄÊı
 int MoreThanHalfNum_Solution(vector<int> numbers) {
     int ans = numbers[0];
     int cnt = 1;
@@ -71,7 +71,7 @@ int MoreThanHalfNum_Solution(vector<int> numbers) {
     ans = cnt > numbers.size() / 2 ? ans : 0;
     return ans;
 }
-// è¿ç»­å­æ•°ç»„çš„å’Œæœ€å¤§
+// Á¬Ğø×ÓÊı×éµÄºÍ×î´ó
 int FindGreatestSumOfSubArray(vector<int> array) {
     if (array.size() == 0 ) return 0;
     int ans = INT_MIN;

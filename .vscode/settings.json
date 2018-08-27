@@ -24,7 +24,11 @@
         "ostream": "cpp",
         "streambuf": "cpp",
         "string_view": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "__string": "cpp",
+        "deque": "cpp",
+        "string": "cpp"
     },
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.encoding": "gbk"
 }

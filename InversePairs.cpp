@@ -7,22 +7,22 @@ public:
     
     int process(vector<int>& data,int start,int end)
     {
-        //é€’å½’ç»ˆæ­¢æ¡ä»¶
+        //µİ¹éÖÕÖ¹Ìõ¼ş
         if(start >= end)
         {
             return 0;
         }
         
-        // å½’å¹¶æ’åºï¼Œå¹¶è®¡ç®—æœ¬æ¬¡é€†åºå¯¹æ•°
-	    vector<int> copy(data); // æ•°ç»„å‰¯æœ¬ï¼Œç”¨äºå½’å¹¶æ’åº
+        // ¹é²¢ÅÅĞò£¬²¢¼ÆËã±¾´ÎÄæĞò¶ÔÊı
+	    vector<int> copy(data); // Êı×é¸±±¾£¬ÓÃÓÚ¹é²¢ÅÅĞò
         int mid=(start+end)>>1;
         int left=process(data, start, mid);
         int right=process(data, mid+1, end);
         
-        int p=mid;//påˆå§‹åŒ–ä¸ºå‰åŠæ®µæœ€åä¸€ä¸ªæ•°å­—çš„ä¸‹æ ‡
-        int q=end;//qåˆå§‹åŒ–ä¸ºååŠæ®µæœ€åä¸€ä¸ªæ•°å­—çš„ä¸‹æ ‡
-        int index=end;//è¾…åŠ©æ•°ç»„çš„ä¸‹æ ‡åˆå§‹åŒ–ä¸ºæœ€åä¸€ä½
-        int count=0;//è®°å½•é€†åºå¯¹çš„ä¸ªæ•°
+        int p=mid;//p³õÊ¼»¯ÎªÇ°°ë¶Î×îºóÒ»¸öÊı×ÖµÄÏÂ±ê
+        int q=end;//q³õÊ¼»¯Îªºó°ë¶Î×îºóÒ»¸öÊı×ÖµÄÏÂ±ê
+        int index=end;//¸¨ÖúÊı×éµÄÏÂ±ê³õÊ¼»¯Îª×îºóÒ»Î»
+        int count=0;//¼ÇÂ¼ÄæĞò¶ÔµÄ¸öÊı
         
         while(p>=start && q>=mid+1)
         {
@@ -42,11 +42,9 @@ public:
         	
         for (int i = start; i <= end; i++)
         {
-			data[i] = copy[i];//æ›´æ–°å½’å¹¶æ’åºåçš„å­æ•°ç»„
+			data[i] = copy[i];//¸üĞÂ¹é²¢ÅÅĞòºóµÄ×ÓÊı×é
 	    }
  
         return (left+right+count);
     }
 };
-
-

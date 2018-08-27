@@ -1,4 +1,4 @@
- #include <iostream>
+#include <iostream>
 #include <vector>
 #include <string>
 using namespace std;
@@ -9,34 +9,34 @@ public:
             swap(a[i], a[j]);
     }
     
-    int flipPancake(vector<int> &nums) { //æ¯æ¬¡ç¿»è½¬çš„ä¸‹è¡¨ä»0å¼€å§‹ã€‚
+    int flipPancake(vector<int> &nums) { //Ã¿´Î·­×ªµÄÏÂ±í´Ó0¿ªÊ¼¡£
         int res = 0;
         int high = (int)nums.size() - 1;
         int cur_max_idx = 0;
         while (high != 0) {
             int m = -1;
-            for (int i = 0; i <= high; i++) // æ‰¾åˆ°å½“å‰è¦å¯»æ‰¾çš„æœ€å¤§çš„æ•°
+            for (int i = 0; i <= high; i++) // ÕÒµ½µ±Ç°ÒªÑ°ÕÒµÄ×î´óµÄÊı
                 if (m < nums[i]) {
                     m = nums[i];
                     cur_max_idx = i;
                 }
-            if (cur_max_idx == high) { //å¦‚æœå½“å‰æœ€å¤§æ•°å·²ç»åœ¨æœ€åäº†ï¼Œåˆ™ä¸ç”¨ç¿»è½¬
+            if (cur_max_idx == high) { //Èç¹ûµ±Ç°×î´óÊıÒÑ¾­ÔÚ×îºóÁË£¬Ôò²»ÓÃ·­×ª
                 high--;
                 continue;
             }
-            if (cur_max_idx == 0) { //å¦‚æœå½“å‰æœ€å¤§æ•°åœ¨é¦–ä½ï¼Œåˆ™åªéœ€ç¿»è½¬ä¸€æ¬¡ï¼Œå°†å…¶æ”¾ç½®åœ¨æœ€å
+            if (cur_max_idx == 0) { //Èç¹ûµ±Ç°×î´óÊıÔÚÊ×Î»£¬ÔòÖ»Ğè·­×ªÒ»´Î£¬½«Æä·ÅÖÃÔÚ×îºó
                 flip(nums, 0, high);
                 res += 1;
             } else {
-                flip(nums, 0, cur_max_idx); //å¦åˆ™ï¼Œå…ˆå°†æœ€å¤§çš„æ•°ç¿»è½¬åˆ°é¦–ä½
-                flip(nums, 0, high); // åœ¨å°†æœ€å¤§æ•°ç¿»è½¬è‡³æœ€åä½
+                flip(nums, 0, cur_max_idx); //·ñÔò£¬ÏÈ½«×î´óµÄÊı·­×ªµ½Ê×Î»
+                flip(nums, 0, high); // ÔÚ½«×î´óÊı·­×ªÖÁ×îºóÎ»
                 res += 2;
             }
             high --;
         }
         return res;
     }
-    int flipPancake2(vector<int> &nums) { //å¯ä»¥ä¸ä»æ•°åˆ—é¦–ä½å¼€å§‹ç¿»è½¬
+    int flipPancake2(vector<int> &nums) { //¿ÉÒÔ²»´ÓÊıÁĞÊ×Î»¿ªÊ¼·­×ª
         int res = 0;
         int high = (int)nums.size() - 1;
         int cur_max_idx = 0;
@@ -51,7 +51,7 @@ public:
                 high--;
                 continue;
             }
-            flip(nums,cur_max_idx,high);// åªéœ€å°†ä»æœ€å¤§æ•°åˆ°æœ€åçš„æ•°è¿›è¡Œç¿»è½¬ï¼Œå¯ä»¥ä½¿å¾—æœ€å¤§æ•°æ”¾ç½®åœ¨æœ€å
+            flip(nums,cur_max_idx,high);// Ö»Ğè½«´Ó×î´óÊıµ½×îºóµÄÊı½øĞĞ·­×ª£¬¿ÉÒÔÊ¹µÃ×î´óÊı·ÅÖÃÔÚ×îºó
             res += 1;
             high --;
         }

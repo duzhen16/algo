@@ -18,7 +18,7 @@ void LL(AVLNode * node) {
     AVLNode * p = node->left;
     node->left = p->right;
     p->right = node;
-    //æŒ‡é’ˆå˜åŒ–å®Œæˆï¼Œæ›´æ–°height
+    //Ö¸Õë±ä»¯Íê³É£¬¸üÐÂheight
     p->height = max(height(p->left), height(p->right)) + 1;
     node->height = max(height(node->left), height(node->right)) + 1;
     node = p;
@@ -28,7 +28,7 @@ void RR(AVLNode * node) {
     AVLNode * p = node->right;
     node->right = p->left;
     p->left = node;
-    //æŒ‡é’ˆå˜åŒ–å®Œæˆï¼Œæ›´æ–°height
+    //Ö¸Õë±ä»¯Íê³É£¬¸üÐÂheight
     p->height = max(height(p->left), height(p->right)) + 1;
     node->height = max(height(node->left), height(node->right)) + 1;
     node = p;
@@ -45,20 +45,20 @@ void RL(AVLNode * node) {
 }
 
 AVLNode * search(AVLNode * root, int val) {
-    if (root == nullptr)  //æ²¡æ‰¾åˆ°å…ƒç´ 
+    if (root == nullptr)  //Ã»ÕÒµ½ÔªËØ
         return nullptr;
     else if(root->val > val)
-        return search(root->left, val); //åœ¨å·¦å­æ ‘é‡Œé¢æŸ¥æ‰¾
+        return search(root->left, val); //ÔÚ×ó×ÓÊ÷ÀïÃæ²éÕÒ
     else if(root->val < val)
-        return search(root->right, val); //åœ¨å³å­æ ‘é‡Œé¢æŸ¥æ‰¾
-    else //ç›¸ç­‰
+        return search(root->right, val); //ÔÚÓÒ×ÓÊ÷ÀïÃæ²éÕÒ
+    else //ÏàµÈ
         return root;
 }
 
 
 void leftBalance(AVLNode * node) {
     AVLNode * p = node->left;
-    if (height(p->left) - height(p->right) == -1) // å·¦å­©å­çš„å³å­æ ‘è¿‡é«˜
+    if (height(p->left) - height(p->right) == -1) // ×óº¢×ÓµÄÓÒ×ÓÊ÷¹ý¸ß
         LR(node);
     else
         LL(node);
@@ -66,7 +66,7 @@ void leftBalance(AVLNode * node) {
 
 void rightBalance(AVLNode * node) {
     AVLNode * p = node->right;
-    if (height(p->right) - height(p->left) == -1) // å³å­©å­çš„å·¦å­æ ‘è¿‡é«˜
+    if (height(p->right) - height(p->left) == -1) // ÓÒº¢×ÓµÄ×ó×ÓÊ÷¹ý¸ß
         RL(node);
     else
         RR(node);
@@ -75,7 +75,7 @@ void rightBalance(AVLNode * node) {
 void insert(AVLNode * root, int val) {
     if (root == nullptr)
         root = new AVLNode(val);
-    // æŸ¥æ‰¾åˆé€‚çš„ä½ç½®
+    // ²éÕÒºÏÊÊµÄÎ»ÖÃ
     else if (root->val > val) {
         insert(root->left, val);
         if (height(root->left) - height(root->right) == 2)
@@ -86,7 +86,7 @@ void insert(AVLNode * root, int val) {
         if (height(root->right) - height(root->left) == 2)
             rightBalance(root);
     }
-    // æ›´æ–°æ ‘çš„é«˜åº¦
+    // ¸üÐÂÊ÷µÄ¸ß¶È
     root->height = max(height(root->left), height(root->right)) + 1;
 }
 
@@ -101,17 +101,17 @@ void remove(AVLNode * root, int val) {
         remove(root->right, val);
         if (height(root->left) - height(root->right) == 2)
             leftBalance(root);
-    } else { // æ‰¾åˆ°äº†è¦åˆ çš„èŠ‚ç‚¹
-        if (root->left == nullptr) { // å·¦å­æ ‘ä¸ºç©ºï¼Œç”¨å³å­©å­ä»£æ›¿ä¹‹
+    } else { // ÕÒµ½ÁËÒªÉ¾µÄ½Úµã
+        if (root->left == nullptr) { // ×ó×ÓÊ÷Îª¿Õ£¬ÓÃÓÒº¢×Ó´úÌæÖ®
             AVLNode * p = root;
             root = root->right;
             delete p;
-        } else if (root->right == nullptr) { // å³å­æ ‘ä¸ºç©ºï¼Œç”¨å·¦å­©å­ä»£æ›¿ä¹‹
+        } else if (root->right == nullptr) { // ÓÒ×ÓÊ÷Îª¿Õ£¬ÓÃ×óº¢×Ó´úÌæÖ®
             AVLNode * p = root;
             root = root->left;
             delete p;
         }
-        else { // å·¦å³å­©å­éƒ½ä¸ç©ºï¼Œæ‰¾å·¦è¾¹æœ€å³çš„èŠ‚ç‚¹ä»£æ›¿ä¹‹
+        else { // ×óÓÒº¢×Ó¶¼²»¿Õ£¬ÕÒ×ó±ß×îÓÒµÄ½Úµã´úÌæÖ®
             AVLNode * p = root->left;
             while (p->right) p = p->right;
             root->val = p->val;
@@ -123,4 +123,3 @@ void remove(AVLNode * root, int val) {
     if (root)
         root->height = max(height(root->left), height(root->right)) + 1;
 }
-

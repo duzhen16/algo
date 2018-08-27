@@ -18,7 +18,7 @@ int binarysearch(vector<int> nums, int target)
     return -1;
 }
 
-// æ—‹è½¬æ•°ç»„çš„æœ€å°å€¼
+// Ğı×ªÊı×éµÄ×îĞ¡Öµ
 int minNumberInRotateArray(vector<int> rotateArray) {
     int low = 0;
     int high = rotateArray.size() - 1;
@@ -37,10 +37,10 @@ int minNumberInRotateArray(vector<int> rotateArray) {
     return rotateArray[mid];
 }
 
-//æ—‹è½¬æ•°ç»„ä¸­è¿›è¡ŒäºŒåˆ†æŸ¥æ‰¾
+//Ğı×ªÊı×éÖĞ½øĞĞ¶ş·Ö²éÕÒ
 int rotatedSearch(vector<int> nums, int target)
 {
-    //äºŒåˆ†æŸ¥æ‰¾æ‰¾åˆ°æœ€å°çš„æ•°ï¼Œå°†åŸæ•°ç»„åˆ†ä¸ºä¸¤éƒ¨åˆ†ï¼Œç„¶ååˆ†åˆ«åœ¨ä¸¤éƒ¨åˆ†ä¸­è¿›è¡ŒåŸå§‹çš„äºŒåˆ†æŸ¥æ‰¾
+    //¶ş·Ö²éÕÒÕÒµ½×îĞ¡µÄÊı£¬½«Ô­Êı×é·ÖÎªÁ½²¿·Ö£¬È»ºó·Ö±ğÔÚÁ½²¿·ÖÖĞ½øĞĞÔ­Ê¼µÄ¶ş·Ö²éÕÒ
     int minidx = minNumberInRotateArray(nums);
     int res1 = binarysearch(nums, 0, minidx - 1);
     int res2 = binarysearch(nums, minidx, nums.size() - 1);
@@ -52,7 +52,7 @@ int rotatedSearch(vector<int> nums, int target)
     return ans;
 }
 
-//äºŒç»´æ•°ç»„æŸ¥æ‰¾
+//¶şÎ¬Êı×é²éÕÒ
 bool search2Dmatrix(int target, vector<vector<int> > array) {
     int row = array.size();
     int col = array[0].size() - 1;
@@ -69,7 +69,7 @@ bool search2Dmatrix(int target, vector<vector<int> > array) {
     return false;
 }
 
-//æ’åºæ•°ç»„ä¸­æ•°å­—å‡ºç°çš„æ¬¡æ•°
+//ÅÅĞòÊı×éÖĞÊı×Ö³öÏÖµÄ´ÎÊı
 int GetFirstK(vector<int> data, int k, int start, int end) {
     if (start > end) 
         return -1;

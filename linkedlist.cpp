@@ -1,4 +1,3 @@
-
 struct ListNode {
     int val;
     struct ListNode *next;
@@ -6,7 +5,7 @@ struct ListNode {
             val(x), next(NULL) {
 };
 
-//åè½¬å•é“¾è¡¨
+//·´×ªµ¥Á´±í
 ListNode* reverseList(ListNode* head) {
     ListNode *prev = nullptr;
     ListNode *next = nullptr;
@@ -18,7 +17,7 @@ ListNode* reverseList(ListNode* head) {
     }
     return prev;
 }
-//é€’å½’åè½¬å•é“¾è¡¨ 
+//µİ¹é·´×ªµ¥Á´±í 
 Node * reverseList_R(Node * head) {
     if (head == nullptr || head->next == nullptr)
         return head;
@@ -29,7 +28,7 @@ Node * reverseList_R(Node * head) {
     return res;
 }
 
-//å€’æ•°ç¬¬Kä¸ªèŠ‚ç‚¹
+//µ¹ÊıµÚK¸ö½Úµã
 ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) {
     if (!pListHead || !k) return nullptr;
     ListNode * p, *q;
@@ -45,7 +44,7 @@ ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) {
     if (k > 1) return nullptr;
     return q;
 }
-//åˆå¹¶ä¸¤ä¸ªæ’åºçš„é“¾è¡¨
+//ºÏ²¢Á½¸öÅÅĞòµÄÁ´±í
 ListNode* Merge(ListNode* pHead1, ListNode* pHead2) {
     if (!pHead1) return pHead2;
     if (!pHead2) return pHead1;
@@ -59,7 +58,7 @@ ListNode* Merge(ListNode* pHead1, ListNode* pHead2) {
     }
     return pMerge;
 }
-//ä¸¤ä¸ªé“¾è¡¨çš„ç¬¬ä¸€ä¸ªäº¤ç‚¹
+//Á½¸öÁ´±íµÄµÚÒ»¸ö½»µã
 ListNode* FindFirstCommonNode( ListNode* pHead1, ListNode* pHead2) {
     int len1, len2;
     len1 = len2 = 0;
@@ -102,7 +101,7 @@ struct Pair {
 };
 
 Node * reverseListByK(Node * head, int k) {
-    //å¾—åˆ°é“¾è¡¨é•¿åº¦ã€‚
+    //µÃµ½Á´±í³¤¶È¡£
     int len = 0;
     Node *p = head;
     while (p) {
