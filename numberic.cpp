@@ -4,6 +4,23 @@
 #include <algorithm>
 using namespace std;
 
+// 计算组合数 利用公式 (n,m) = (n - 1, m - 1) + (n - 1, m)
+#define N 100
+vector<vector<long long>> combs(N + 1, vector<long long>(N + 1, 0));
+
+void combination() {
+    combs[1][0] = 1;
+    combs[1][1] = 1;
+    for (int i = 0; i <= N; ++i)
+        combs[i][0] = 1;
+    for (int i = 1; i <= N; ++i)
+        combs[i][1] = i;
+    for (int i = 1; i <= N; i++)
+        for (int j = 1; j <= N; j++)
+            combs[i][j] = combs[i - 1][j - 1] + combs[i - 1][j];
+         // combs[i][j] = ( combs[i - 1][j - 1] % 1000000007 + combs[i - 1][j] % 1000000007 ) % 1000000007;
+}
+
 //数字中1的个数    
 int  NumberOf1(int n) {
      int cnt = 0;

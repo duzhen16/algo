@@ -1,7 +1,7 @@
 /*
-é˜¿é‡Œå®ä¹ ä¸€é¢
-1. åè½¬å•é“¾è¡¨
-2. å°†ä»¥æœ‰åºæ•°ç»„è¿›è¡Œç¿»è½¬ï¼Œç„¶åè¿›è¡ŒæŸ¥æ‰¾æŸä¸ªç›®æ ‡
+°¢ÀïÊµÏ°Ò»Ãæ
+1. ·´×ªµ¥Á´±í
+2. ½«ÒÔÓĞĞòÊı×é½øĞĞ·­×ª£¬È»ºó½øĞĞ²éÕÒÄ³¸öÄ¿±ê
 */
 struct Node {
     int val;
@@ -21,7 +21,7 @@ ListNode* reverseList(ListNode* head) {
 }
 
 int minNumberInRotateArray(vector<int> rotateArray) {
-// æ—‹è½¬æ•°ç»„çš„æœ€å°å€¼,å³å°±æ˜¯æ‰¾åˆ°å°†æ•°ç»„åˆ†ä¸ºä¸¤éƒ¨åˆ†æœ‰åºæ•°ç»„çš„è½´
+// Ğı×ªÊı×éµÄ×îĞ¡Öµ,¼´¾ÍÊÇÕÒµ½½«Êı×é·ÖÎªÁ½²¿·ÖÓĞĞòÊı×éµÄÖá
     int low = 0;
     int high = rotateArray.size() - 1;
     int mid = low;
@@ -40,7 +40,7 @@ int minNumberInRotateArray(vector<int> rotateArray) {
 }
 int rotatedSearch(vector<int> nums, int target)
 {
-//äºŒåˆ†æŸ¥æ‰¾æ‰¾åˆ°æœ€å°çš„æ•°ï¼Œå°†åŸæ•°ç»„åˆ†ä¸ºä¸¤éƒ¨åˆ†ï¼Œç„¶ååˆ†åˆ«åœ¨ä¸¤éƒ¨åˆ†ä¸­è¿›è¡ŒåŸå§‹çš„äºŒåˆ†æŸ¥æ‰¾
+//¶ş·Ö²éÕÒÕÒµ½×îĞ¡µÄÊı£¬½«Ô­Êı×é·ÖÎªÁ½²¿·Ö£¬È»ºó·Ö±ğÔÚÁ½²¿·ÖÖĞ½øĞĞÔ­Ê¼µÄ¶ş·Ö²éÕÒ
     int minidx = minNumberInRotateArray(nums);
     int res1 = binarysearch(nums, 0, minidx - 1);
     int res2 = binarysearch(nums, minidx, nums.size() - 1);
@@ -53,9 +53,9 @@ int rotatedSearch(vector<int> nums, int target)
 }
 
 /*
-è…¾è®¯å®ä¹ ä¸€é¢
-1. åœ¨å­—ç¬¦ä¸²ä¸­æŸ¥æ‰¾å­ä¸²
-2. æ¢é’±çš„æœ€å°‘è´§å¸å¼ æ•°
+ÌÚÑ¶ÊµÏ°Ò»Ãæ
+1. ÔÚ×Ö·û´®ÖĞ²éÕÒ×Ó´®
+2. »»Ç®µÄ×îÉÙ»õ±ÒÕÅÊı
 */
 vector<int> getNext(string pattern) {
 	int pl = pattern.size();
@@ -112,12 +112,11 @@ int minCoins2(vector<int> &Coins, int aim) {
 }
 
 /*
-é˜¿é‡Œäº‘æµ‹è¯„é¢˜
-1. ä¸€å‰¯ç‰Œåªåœ¨ä¸¤ç«¯æŠ½ï¼Œä¸¤ä¸ªäººè½®æµè¿›è¡Œï¼Œé—®è°æœ€åå¯ä»¥èµ¢
+°¢ÀïÔÆ²âÆÀÌâ
+1. Ò»¸±ÅÆÖ»ÔÚÁ½¶Ë³é£¬Á½¸öÈËÂÖÁ÷½øĞĞ£¬ÎÊË­×îºó¿ÉÒÔÓ®
 The dp[i][j] saves how much more scores that the first-in-action 
 player will get from i to j than the second player. First-in-action
 means whomever moves first. 
-
 */
 int card(vector<int> &nums) {
 // dp[i][j] = max(nums[i] - dp[i+1][j], nums[j] - dp[i][j-1]);
@@ -125,26 +124,26 @@ int card(vector<int> &nums) {
     vector<int> dp(len, 0);
     for (int i = len - 2; i >= 0; i--) 
         for (int j = i + 1; j < len; j++) 
-            // ä¼˜åŒ–åˆ°ä¸€ç»´
+            // ÓÅ»¯µ½Ò»Î¬
             dp[j] = max(nums[i] - dp[j], nums[j] - dp[j - 1]);
     int res = dp[len - 1];
     
-    if (res > 0) return 1; // å…ˆæŠ½è€…èƒœ
-    else if (res < 0) return 2; // åæŠ½è€…èƒœ
-    else return 0; // å¹³å±€
+    if (res > 0) return 1; // ÏÈ³éÕßÊ¤
+    else if (res < 0) return 2; // ºó³éÕßÊ¤
+    else return 0; // Æ½¾Ö
 }
 
 /*
-é˜¿é‡Œäº‘ä¸€é¢
-1. å †æ’åº
-2 åœ¨å¤§é‡çš„unsigned intå‹æ•°æ®ä¸­æ‰¾åˆ°åªå‡ºç°ä¸€æ¬¡çš„æ•°
+°¢ÀïÔÆÒ»Ãæ
+1. ¶ÑÅÅĞò
+2 ÔÚ´óÁ¿µÄunsigned intĞÍÊı¾İÖĞÕÒµ½Ö»³öÏÖÒ»´ÎµÄÊı
 */
-void make_heap(vector<int> &nums, int tar, int len) {  // å¤§é¡¶å †
+void make_heap(vector<int> &nums, int tar, int len) {  // ´ó¶¥¶Ñ
 	int tmp = nums[tar];
 	int j = 2 * tar + 1;
 	while (j < len) {
-		if (j + 1 < len && nums[j] < nums[j + 1]) j++; // jæ˜¯å­©å­ä¸­æœ€å¤§çš„
-		if (nums[j] <= tmp) break; // å·²ç»æ˜¯å¤§é¡¶å †äº†
+		if (j + 1 < len && nums[j] < nums[j + 1]) j++; // jÊÇº¢×ÓÖĞ×î´óµÄ
+		if (nums[j] <= tmp) break; // ÒÑ¾­ÊÇ´ó¶¥¶ÑÁË
 		else {
 			nums[tar] = nums[j];
 			tar = j;
@@ -154,8 +153,8 @@ void make_heap(vector<int> &nums, int tar, int len) {  // å¤§é¡¶å †
 	nums[tar] = tmp;
 }
 void heap(vector<int> &nums) { 
-//å †æ’åº ç¨³å®š
-    for (int i = nums.size() / 2 - 1; i >= 0; i--)  // ä»æœ€åä¸€ä¸ªä¸æ˜¯å¶å­çš„èŠ‚ç‚¹å¼€å§‹ï¼Œå»ºç«‹ä¸€ä¸ªå¤§é¡¶å †
+//¶ÑÅÅĞò ÎÈ¶¨
+    for (int i = nums.size() / 2 - 1; i >= 0; i--)  // ´Ó×îºóÒ»¸ö²»ÊÇÒ¶×ÓµÄ½Úµã¿ªÊ¼£¬½¨Á¢Ò»¸ö´ó¶¥¶Ñ
 		make_heap(nums, i, nums.size());
 	for (int i = nums.size() - 1; i >= 0; i--) {
 		swap(nums[0], nums[i]);
@@ -163,8 +162,8 @@ void heap(vector<int> &nums) {
 	}
 }
 vector<unsigned int> appearOnce(vector<unsigned int> &nums) {
-//éœ€è¦è€ƒè™‘å°½å¯èƒ½åœ°é™ä½æ—¶é—´ç©ºé—´å¤æ‚åº¦
-    vector<bitset<2>> bits(UINT32_MAX, 0); // 00 --> å‡ºç°0æ¬¡ï¼› 01 --> å‡ºç°1æ¬¡ï¼› 11 --> å‡ºç°å¤šæ¬¡
+//ĞèÒª¿¼ÂÇ¾¡¿ÉÄÜµØ½µµÍÊ±¼ä¿Õ¼ä¸´ÔÓ¶È
+    vector<bitset<2>> bits(UINT32_MAX, 0); // 00 --> ³öÏÖ0´Î£» 01 --> ³öÏÖ1´Î£» 11 --> ³öÏÖ¶à´Î
     for (auto n : nums) {
         if (bits[n] == 0)
             bits[n] |= 0b01;
@@ -178,11 +177,11 @@ vector<unsigned int> appearOnce(vector<unsigned int> &nums) {
     return ans;
 }
 /*
-é˜¿é‡Œäº‘äºŒé¢
-1. å¿«æ’
-2. æ±‚ä¸¤ä¸ªå­—ç¬¦ä¸²çš„äº¤é›†
-3. å¤–æ’åºï¼ˆä»‹ç»æ€è·¯ï¼‰
-4. ä¹°å–è‚¡ç¥¨çš„æœ€å¤§æ”¶ç›Š
+°¢ÀïÔÆ¶şÃæ
+1. ¿ìÅÅ
+2. ÇóÁ½¸ö×Ö·û´®µÄ½»¼¯
+3. ÍâÅÅĞò£¨½éÉÜË¼Â·£©
+4. ÂòÂô¹ÉÆ±µÄ×î´óÊÕÒæ
 */
 void q_sort(vector<int> &nums, int begin, int end) {
 	int i = begin;
@@ -201,20 +200,20 @@ void q_sort(vector<int> &nums, int begin, int end) {
 	q_sort(nums, i + 1, end);
 }
 void quick(vector<int> &nums) {
-//å¿«é€Ÿæ’åº ä¸ç¨³å®š
+//¿ìËÙÅÅĞò ²»ÎÈ¶¨
     int begin = 0;
 	int end = nums.size() - 1;
 	q_sort(nums, begin, end);
 }
 string intersect2strings(string& str1, string& str2) {
-/* ï¼ˆå‡è®¾strä¸­ä¸å‡ºç°é‡å¤å­—ç¬¦ï¼‰
-1. éå†str1ä¸­çš„å­—ç¬¦ï¼Œåœ¨str2ä¸­è¿›è¡ŒæŸ¥æ‰¾ 
-   æ—¶é—´å¤æ‚åº¦ Oï¼ˆn*n)
-2. åˆ†åˆ«å¯¹str1ï¼Œ str2è¿›è¡Œæ’åºï¼Œç„¶åä½¿ç”¨ä¸¤ä¸ªæŒ‡é’ˆåˆ†åˆ«æŒ‡å‘ä¸¤ä¸ªå­—ç¬¦ä¸²ï¼Œä»å¤´å¼€å§‹è¿›è¡Œæ¯”è¾ƒ
-   æ—¶é—´å¤æ‚åº¦ O(nlogn)
-3. ä½¿ç”¨ä½å›¾ï¼Œåˆ†åˆ«éå†ä¸¤ä¸ªå­—ç¬¦ä¸²
-   æ—¶é—´å¤æ‚åº¦ O(n)
-   ç©ºé—´å¤æ‚åº¦ O(1), æ¶ˆè€—å†…å­˜ 128bit
+/* £¨¼ÙÉèstrÖĞ²»³öÏÖÖØ¸´×Ö·û£©
+1. ±éÀústr1ÖĞµÄ×Ö·û£¬ÔÚstr2ÖĞ½øĞĞ²éÕÒ 
+   Ê±¼ä¸´ÔÓ¶È O£¨n*n)
+2. ·Ö±ğ¶Ôstr1£¬ str2½øĞĞÅÅĞò£¬È»ºóÊ¹ÓÃÁ½¸öÖ¸Õë·Ö±ğÖ¸ÏòÁ½¸ö×Ö·û´®£¬´ÓÍ·¿ªÊ¼½øĞĞ±È½Ï
+   Ê±¼ä¸´ÔÓ¶È O(nlogn)
+3. Ê¹ÓÃÎ»Í¼£¬·Ö±ğ±éÀúÁ½¸ö×Ö·û´®
+   Ê±¼ä¸´ÔÓ¶È O(n)
+   ¿Õ¼ä¸´ÔÓ¶È O(1), ÏûºÄÄÚ´æ 128bit
 */
     bitset<128> bits;
     string ans;
@@ -235,11 +234,11 @@ int maxProfit(vector<int>& prices) {
     return maxProfit;
 }
 /*
-é˜¿é‡Œäº‘ä»£ç é¢ï¼šæŒ‰éƒ¨åˆ†åè½¬é“¾è¡¨
-è¾“å…¥é“¾è¡¨å’ŒK
+°¢ÀïÔÆ´úÂëÃæ£º°´²¿·Ö·´×ªÁ´±í
+ÊäÈëÁ´±íºÍK
 1->2->3->4->5->6->7->8->9
 K = 3
-è¾“å‡º 
+Êä³ö 
 7->8->9->4->5->6->1->2->3
 */
 struct Pair {
@@ -285,10 +284,10 @@ Node * reverseListByK(Node * head, int k) {
 }
 
 /*
-é˜¿é‡Œäº‘äº¤å‰é¢
-æœ‰ä¸€ä¸ªå¾ˆå¤§çš„æ•°ç»„ï¼Œæ¯æ¬¡ä¼šç»™ä¸¤ä¸ªä¸‹æ ‡bå’Œeï¼Œè¿”å›è¿™ä¸ªèŒƒå›´å†…çš„æœ€å°å€¼ï¼Œä½†æ˜¯è¿™ä¸ªæŸ¥è¯¢æ“ä½œæ˜¯éå¸¸é¢‘ç¹çš„
-å¦‚æœæ¯æ¬¡éƒ½æ˜¯åœ¨bå’Œeä¹‹é—´å¾ªç¯,å¼€é”€å¾ˆå¤§,ç°åœ¨å¦‚ä½•å¯¹å…¶è¿›è¡Œä¼˜åŒ–æŸ¥è¯¢ï¼Œä½¿å¾—ä»¥åçš„æŸ¥è¯¢å˜å¿«
-æ€è·¯ï¼šå»ºç«‹ä¸€é¢—æŸ¥è¯¢æ ‘ï¼Œè¾“å…¥b,eè¿”å›å…¶ä¸­çš„æœ€å°å€¼
+°¢ÀïÔÆ½»²æÃæ
+ÓĞÒ»¸öºÜ´óµÄÊı×é£¬Ã¿´Î»á¸øÁ½¸öÏÂ±êbºÍe£¬·µ»ØÕâ¸ö·¶Î§ÄÚµÄ×îĞ¡Öµ£¬µ«ÊÇÕâ¸ö²éÑ¯²Ù×÷ÊÇ·Ç³£Æµ·±µÄ
+Èç¹ûÃ¿´Î¶¼ÊÇÔÚbºÍeÖ®¼äÑ­»·,¿ªÏúºÜ´ó,ÏÖÔÚÈçºÎ¶ÔÆä½øĞĞÓÅ»¯²éÑ¯£¬Ê¹µÃÒÔºóµÄ²éÑ¯±ä¿ì
+Ë¼Â·£º½¨Á¢Ò»¿Å²éÑ¯Ê÷£¬ÊäÈëb,e·µ»ØÆäÖĞµÄ×îĞ¡Öµ
 */
 struct Node {
     int begin;

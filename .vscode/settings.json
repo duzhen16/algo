@@ -27,8 +27,10 @@
         "tuple": "cpp",
         "__string": "cpp",
         "deque": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "__split_buffer": "cpp",
+        "iterator": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
-    "files.encoding": "gbk"
+    "files.encoding": "gb2312" 
 }
