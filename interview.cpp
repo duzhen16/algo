@@ -1,4 +1,35 @@
 /*
+Akuna笔试：
+1.求[a1,a2,a3,...,an]数列的所有连续子序列的和
+2.只使用+1，*2两个操作，将0计算到K，问最少需要多少次计算
+*/
+
+long subarraySum(vector<int> arr) {
+    int arr_count = arr.size();
+    long output = 0;
+    long num = 0;
+    for (int i = 0; i < arr_count / 2; i++) {
+        num += arr_count - i * 2;
+        output += num * (arr[i] + arr[arr_count - 1 - i]);
+    }
+    if (arr_count % 2 == 1)
+        output += (num + 1) * arr[arr_count / 2];
+    return output;
+}
+
+int getK(long K) {
+    if (K == 0) return 0;
+    if (K == 1)
+        return 1;
+    else {
+        if (K % 2 == 1)
+            return getK(K / 2) + 2;
+        else
+            return getK(K / 2) + 1;
+    }
+}
+
+/*
 阿里实习一面
 1. 反转单链表
 2. 将以有序数组进行翻转，然后进行查找某个目标
