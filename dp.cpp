@@ -1,9 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <math.h>
-#include <algorithm>
 using namespace std;
-	
+
 class minPathSum_C {
 public:
 	int minPathSum(vector<vector<int>> &M) {
@@ -156,13 +154,4 @@ public:
 	}
 
 };
-
-int main()
-{
-	int i = log(12) / log(2);
-	cout << i << endl;
-	system("pause");
-	return 0;
-}
-
 
